@@ -1,9 +1,8 @@
-#day 1 problem 2, gives a too high score
+#day 1 problem 2, solved!
 file = open("input.txt", "r")
 list1=[]
 list2=[]
-appearanceTimes=[]
-appearanceScore=0
+similarityScore=0
 
 #Counts how many times value appears in list
 def countAppearances(list, value):
@@ -26,12 +25,8 @@ list2.sort()
 sum=0
 
 for i in range(0,len(list1)):
-    appearanceTimes.append(countAppearances(list2,list1[i]))
+    similarityScore+=countAppearances(list2,list1[i])*list1[i]  
 
-for i in range(0,len(appearanceTimes)):
-    appearanceScore+=list1[i]*list2[i]
-    
-
-print("Total appearance score: ",appearanceScore)
+print("Total similarity score: ",similarityScore)
     
 file.close()
