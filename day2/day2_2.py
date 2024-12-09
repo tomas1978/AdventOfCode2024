@@ -42,6 +42,7 @@ def isCorrectDistance(list):
 while content:
     content=file.readline()
     numbers=content.split()
+    safeReport=False
     if content:
         for i in range(0,len(numbers)):
             numbers[i]=int(numbers[i])    
@@ -49,25 +50,38 @@ while content:
         if isDecreasing(numbers) and oneRemoved==True:
             oneRemoved=False
             if isCorrectDistance(numbers) and oneRemoved==False:
-                numberOfSafeReports+=1
+                 if safeReport==False:
+                        numberOfSafeReports+=1
+                        safeReport=True
+                 else:
+                    break
         oneRemoved=False
         if isDecreasing(numbers) and oneRemoved==False:
             oneRemoved=False
             if isCorrectDistance(numbers):
-                numberOfSafeReports+=1
+                    if safeReport==False:
+                        numberOfSafeReports+=1
+                        safeReport=True
+                    else:
+                        break
         oneRemoved=False
         if isIncreasing(numbers) and oneRemoved==True:
             oneRemoved=False
-            if isCorrectDistance(numbers) and oneRemoved==False:
-                numberOfSafeReports+=1
+            if isCorrectDistance(numbers) and oneRemoved==True:
+                    if safeReport==False:
+                        numberOfSafeReports+=1
+                        safeReport=True
+                    else:
+                        break
         oneRemoved=False
         if isIncreasing(numbers) and oneRemoved==False:
             oneRemoved=False
             if isCorrectDistance(numbers):
-                numberOfSafeReports+=1
+                    if safeReport==False:
+                        numberOfSafeReports+=1
+                        safeReport=True
+                    else:
+                        break
 
 
 print("Number of safe reports: ",numberOfSafeReports)
-
-        
-
