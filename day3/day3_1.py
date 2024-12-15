@@ -1,5 +1,8 @@
-#day 3 problem 1, 11 dec just started
+#day 3 problem 1, 11 dec 
 #12 dec creating a list with positions of all mul instructions
+#13 dec starting to find ( , )
+#14 dec trying a new approach
+
 file = open("inputSmall.txt", "r")
 data=file.readline()
 mulPositions=[]
@@ -9,12 +12,14 @@ while lastMul!=-1:
     lastMul=data.find("mul", lastMul+1, len(data))
     if lastMul!=-1:
         mulPositions.append(lastMul)
-print(mulPositions)
+#print(mulPositions)
 
-for i in range(0,len(mulPositions)):
-    leftParanthesis=data.find("(",mulPositions[i])
-    comma=data.find(",")
-    rightParanthesis=data.find(")",mulPositions[i])
-    print("left: ",leftParanthesis, "comma", comma, "right",rightParanthesis)
+#Does not work at all, must probably be re-written from scratch
+for i in range(0,len(mulPositions)-6):
+    if i<len(mulPositions):
+        for j in range(mulPositions[i], mulPositions[i+1]):
+            if mulPositions[j-1]=='(':
+                leftParenthesis=j
+                print(leftParenthesis)
 
     
